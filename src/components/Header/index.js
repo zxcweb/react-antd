@@ -1,19 +1,42 @@
 import React,{ Component } from 'react';
 import { Row, Col } from 'antd';
 import utils from '../../utils/utils';
+import axios from '../../axios';
 import './index.less';
 
 
 class Header extends Component{
     state = {
-        userName:''
+        userName:'',
+        sysTime:utils.formatDate(new Date().getTime()),
+        dayPictureUrl:'',
+        weather:''
     }
     componentDidMount(){
         setInterval(()=>{
-           utils.formatDate(new Date())
+            let sysTime = utils.formatDate(new Date().getTime());
+            this.setState({
+                sysTime
+            })
         },1000)
         this.setState({
-            userName:"河畔一角"
+            userName:"超厉害"
+        })
+        this.getWeatherAPIData()
+    }
+    getWeatherAPIData(){
+        let city = "北京"; 
+        axios.jsonp({
+            url:"http://api.map.baidu.com/telematics/v3/weather?location="+encodeURIComponent(city)+"&output=json&ak=3p49MVra6urFRGOT9s8UBWr2",
+        }).then((res)=>{
+            console.log(res)
+            if(res.status === "success"){
+                let data = res.results[0].weather_data[0];
+                this.setState({
+                    dayPictureUrl:data.dayPictureUrl,
+                    weather:data.weather
+                })
+            }
         })
     }
     render(){
@@ -28,8 +51,13 @@ class Header extends Component{
                 <Row className="breadcrumb">
                     <Col span={4} className="breadcrumb-title">首页</Col>
                     <Col span={20} className="weather">
-                        <span className="date">2018-5-10</span>
-                        <span className="weather-detail">晴转多云</span>
+                        <span className="date">{this.state.sysTime}</span>
+                        <span className="weather-img">
+                            <img src={this.state.dayPictureUrl} alt="天气"/>
+                        </span>
+                        <span className="weather-detail">
+                            {this.state.weather}
+                        </span>
                     </Col>
                 </Row>
             </div>
