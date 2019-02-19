@@ -11,6 +11,7 @@ import Notice from '../pages/ui/notice';
 import Messages from '../pages/ui/messages';
 import Tabs from '../pages/ui/tabs';
 import Gallery from '../pages/ui/gallerys';
+import Carousels from '../pages/ui/carousel';
 import NotMatch from '../pages/nomatch';
 
 export default class RouterView extends Component{
@@ -29,6 +30,7 @@ export default class RouterView extends Component{
                                 <Route path='/admin/ui/messages' component={Messages}/> 
                                 <Route path='/admin/ui/tabs' component={Tabs}/> 
                                 <Route path='/admin/ui/gallery' component={Gallery}/>
+                                <Route path='/admin/ui/carousel' component={Carousels}/>
                                 <Route component={NotMatch}/> 
                             </Switch>
                         </Admin>

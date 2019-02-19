@@ -7755,6 +7755,10 @@ react-lazy-load@^3.0.13:
     lodash.throttle "^4.0.0"
     prop-types "^15.5.8"
 
+react-lazyload@^2.5.0:
+  version "2.5.0"
+  resolved "http://registry.npm.taobao.org/react-lazyload/download/react-lazyload-2.5.0.tgz#7ed20bf0408dc684c10e808060e51d904cc0ab8d"
+
 react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "http://registry.npm.taobao.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"

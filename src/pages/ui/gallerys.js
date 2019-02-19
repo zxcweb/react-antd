@@ -1,12 +1,22 @@
 import React,{ Component } from 'react';
 import {
-    Card,Row,Col
+    Card,Row,Col,Modal
 }
 from 'antd';
+// import LazyLoad from 'react-lazyload';
 import './index.less';
+
 
 export default class Gallery extends Component{
     state = {
+        imgSrc:'',
+        visible:false
+    }
+    showImage = (imgSrc) =>{
+        this.setState({
+            visible:true,
+            imgSrc
+        })
     }
     render(){
         const imgs = [
@@ -27,7 +37,7 @@ export default class Gallery extends Component{
                         list.map((item)=>{
                             let src = "/assets/gallery/"+item;
                             return <Card 
-                                        cover={<img src={src}/>}
+                                        cover={<img src={src} onClick={()=>this.showImage(item)}/>}
                                         key={item} 
                                         style={{marginBottom:"8px"}}
                                     >
@@ -43,10 +53,21 @@ export default class Gallery extends Component{
         })
         return (
             <div className="gal-wrap">
-                <Row gutter="8">
+                <Row gutter={8}>
                     {imgList}
                 </Row>
-                
+                <Modal 
+                    visible={this.state.visible}
+                    onCancel={()=>{
+                        this.setState({
+                            visible:false
+                        })
+                    }}
+                    footer={null}
+                    header={null}
+                >
+                    <img src={"/assets/gallery/"+this.state.imgSrc} alt="" style={{width:"100%"}}/>
+                </Modal>
             </div>
         )
     }
