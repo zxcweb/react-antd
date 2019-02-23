@@ -9,5 +9,20 @@ export default {
         let mi = date.getMinutes()>9?date.getMinutes():"0"+date.getMinutes();
         let ss = date.getSeconds()>9?date.getSeconds():"0"+date.getSeconds();
         return yy + "-" + mo + "-" + dd + "  " + hh + ":" + mi + ":" + ss;
+    },
+    pagination(data,callback){
+        const page = {
+            onChange:(current)=>{
+                callback(current)
+            },
+            current:data.result.page,
+            pageSize:data.result.page_size,
+            total:data.result.total,
+            showTotal:()=>{
+                return `共${data.result.total}条`
+            },
+            showQuickJumper:true
+        }
+        return page;
     }
 }

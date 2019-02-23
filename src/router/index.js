@@ -14,7 +14,10 @@ import Gallery from '../pages/ui/gallerys';
 import Carousels from '../pages/ui/carousel';
 import LoginForm from '../pages/form/login';
 import Register from '../pages/form/register';
+import BasicTable from '../pages/table/basicTable';
+import HighTable from '../pages/table/highTable';
 import NotMatch from '../pages/nomatch';
+
 
 export default class RouterView extends Component{
     render(){
@@ -35,6 +38,8 @@ export default class RouterView extends Component{
                                 <Route path='/admin/ui/carousel' component={Carousels}/>
                                 <Route path='/admin/form/login' component={LoginForm}/>
                                 <Route path='/admin/form/reg' component={Register}/>
+                                <Route path='/admin/table/basic' component={BasicTable}/>
+                                <Route path='/admin/table/high' component={HighTable}/>
                                 <Route component={NotMatch}/> 
                             </Switch>
                         </Admin>
