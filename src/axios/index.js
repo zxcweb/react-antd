@@ -45,6 +45,7 @@ export default class Axios{
                         })
                     }
                 }else{
+                    loading.style.display = 'none';
                     reject(res.data)
                 }
             })

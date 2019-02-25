@@ -11,6 +11,7 @@ export default {
         return yy + "-" + mo + "-" + dd + "  " + hh + ":" + mi + ":" + ss;
     },
     pagination(data,callback){
+        console.log(data)
         const page = {
             onChange:(current)=>{
                 callback(current)
@@ -21,7 +22,6 @@ export default {
             showTotal:()=>{
                 return `共${data.result.total}条`
             },
-            showQuickJumper:true
         }
         return page;
     }
